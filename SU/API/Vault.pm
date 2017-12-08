@@ -1,4 +1,4 @@
-package SU::API::Box;
+package SU::API::Vault;
 
 use strict;
 use warnings;
