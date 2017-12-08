@@ -18,6 +18,8 @@ sub new {
 
     $self->{ua} = LWP::UserAgent->new;
     $self->{login_status} = "not logged in";
+    $self->{exp_time} = 0;
+    $self->{client_token} = undef;
 
     bless $self, $class;
     return $self;
