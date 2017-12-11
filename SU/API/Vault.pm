@@ -4,8 +4,11 @@ use strict;
 use warnings;
 
 use HTTP::Request;
+use IO::File;
 use JSON;
 use LWP::UserAgent;
+use open IO => ':raw';
+
 
 sub new {
     my $class = shift;
@@ -80,6 +83,19 @@ sub get_secret {
         }
     }
     
+}
+
+sub print_bindata {
+    my ($self, $filename) = @_;
+    if(!$self->{last_secret} or !$filename) {
+        return undef;
+    }
+    my $fh = IO::File->new();
+    if ($fh->open("> $filename")) {
+        print $fh pack('c*', @{$self->{last_secret}->{data}->{binaryData}});
+        $fh->close;
+    }
+
 }
 
 1;
