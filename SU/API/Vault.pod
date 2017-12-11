@@ -1,0 +1,96 @@
+=head1 NAME
+
+SU::API::Box
+
+=head1 SYNOPSIS
+
+    use strict;
+    use warnings;
+
+    use SU::API::Vault;
+
+    my $role_id = "6cc1395e-c53c-4aa9-9a2c-42476ab647b5"; # Just examples, you need to create these for your self
+    my $secret_id = "d5f7ddc5-abc5-4d3f-bcfa-2c9bfebd124e";
+    my $vault = new SU::API::Vault("https://vault.example.com:8200", $role_id, $secret_id);
+
+=head1 DESCRIPTION
+
+Module used to integrate with the REST API that Vault provides.
+
+=head1 CONSTRUCTOR
+
+=over
+
+=item new (URL, ROLE_ID, SECRET_ID)
+
+"URL" is the URL to your vault server, e.g. https://vault.example.com:8200 
+
+"ROLE_ID" for your approle 
+
+"SECRET_ID" for your approle 
+
+Returns a new SU::API::Vault object.
+
+=back
+
+=head1 METHODS
+
+=over
+
+=item login ()
+
+Login and get the access_token for use in future requests, this is done automatically,
+so it is only documentet for sake of completness.
+
+=item get_secret (PATH)
+
+Perform the actual request.
+
+"PATH" is mandatory.
+
+Returns the result in a perl reference.
+
+=item print_bindata(FILENAME)
+
+Prints the content of binaryData to a file denoted by FILENAME
+
+
+=back
+
+=head1 DEPENDS
+
+L<HTTP::Request>,
+L<IO::File>,
+L<JSON>,
+L<LWP::UserAgent>,
+
+=head1 LICENSE
+
+Copyright (c) 2016-, IT Services, Stockholm University
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+disclaimer.
+
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following
+disclaimer in the documentation and/or other materials provided with the distribution.
+
+Neither the name of Stockholm University nor the names of its contributors may be used to endorse or promote products
+derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+=head1 AUTHOR
+
+Mikael Nordin <mikael.nordin@su.se>,
+
