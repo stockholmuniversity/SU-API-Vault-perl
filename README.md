@@ -2,6 +2,10 @@
 A perl lib that interacts with Hashicorp Vault
 
 ```perl
+#!/usr/bin/env perl
+
+use warnings;
+use strict;
 use SU::API::Vault;
 
 my $role_id = "6cc1395e-c53c-4aa9-9a2c-42476ab647b5"; # Just examples, you need to create these for your self
