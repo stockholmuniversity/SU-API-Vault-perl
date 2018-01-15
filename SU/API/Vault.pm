@@ -76,7 +76,7 @@ sub get_secret {
             $self->{last_secret}->{path} = $path; 
             $self->{last_secret}->{access_time} = $time; 
             $self->{last_secret}->{data} = $perl_data->{data}; 
-            my @keys = keys $self->{last_secret}->{data};
+            my @keys = keys %{$self->{last_secret}->{data}};
             $self->{last_secret}->{data_keys} = \@keys; 
             return $self->{last_secret};
 
