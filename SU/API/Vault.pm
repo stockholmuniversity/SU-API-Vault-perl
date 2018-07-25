@@ -63,6 +63,28 @@ sub login
 
 }
 
+sub logout
+{
+    my ($self)  = @_;
+    my $request_url = "$self->{url}/v1/auth/token/revoke-self";
+    my $req = HTTP::Request->new(POST => $request_url);
+    $self->{res} = $self->{ua}->request($req);
+    if (!$self->{res}->is_success)
+    {
+        return undef;
+    }
+    else
+    {
+        $self->{login_status}  = "not logged in";
+        $self->{logged_in}     = 0;
+        $self->{exp_time}      = time;
+        $self->{client_token}  = undef;
+        $self->{last_secret}   = undef;
+    }
+    return $self->{login_status};
+
+}
+
 sub get_secret
 {
     my $time    = time;
