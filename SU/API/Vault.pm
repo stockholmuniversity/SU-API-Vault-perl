@@ -68,6 +68,7 @@ sub logout
     my ($self)  = @_;
     my $request_url = "$self->{url}/v1/auth/token/revoke-self";
     my $req = HTTP::Request->new(POST => $request_url);
+    $req->header('X-Vault-Token' => $self->{client_token});
     $self->{res} = $self->{ua}->request($req);
     if (!$self->{res}->is_success)
     {
