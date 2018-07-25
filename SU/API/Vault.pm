@@ -63,7 +63,7 @@ sub login
 
 }
 
-sub logout
+sub DESTROY
 {
     my ($self) = @_;
     my $request_url = "$self->{url}/v1/auth/token/revoke-self";
