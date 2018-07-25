@@ -1,3 +1,4 @@
+
 =head1 NAME
 
 SU::API::Box
@@ -41,6 +42,12 @@ Returns a new SU::API::Vault object.
 
 Login and get the access_token for use in future requests, this is done automatically,
 so it is only documentet for sake of completness.
+
+=item logout ()
+
+Logout and revoke the access_token for use in future requests, this is not done automatically,
+and should be done at the end of your script so that you don't leave a lot of access tokens
+lying around the vault server.
 
 =item get_secret (PATH)
 
