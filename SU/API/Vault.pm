@@ -28,7 +28,6 @@ sub new
     $self->{relative_path} = "/v1/secret/vaulttoolsecrets";
     $self->{client_token}  = undef;
     $self->{last_secret}   = undef;
-    $self->{last_secret}   = undef;
 
     bless $self, $class;
     return $self;
