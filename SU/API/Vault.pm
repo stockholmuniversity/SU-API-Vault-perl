@@ -16,15 +16,18 @@ sub new
                 url       => shift,
                 role_id   => shift,
                 secret_id => shift,
+                timeout   => shift || 30,
                };
 
     $self->{ua} = LWP::UserAgent->new;
     $self->{ua}->default_header('Accept' => 'application/json');
+    $self->{ua}->timeout($self->{timeout});
     $self->{login_status}  = "not logged in";
     $self->{logged_in}     = 0;
     $self->{exp_time}      = time;
     $self->{relative_path} = "/v1/secret/vaulttoolsecrets";
     $self->{client_token}  = undef;
+    $self->{last_secret}   = undef;
     $self->{last_secret}   = undef;
 
     bless $self, $class;
